@@ -1,0 +1,1 @@
+given url: https://translate.google.com/ is opened
