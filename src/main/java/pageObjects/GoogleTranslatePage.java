@@ -17,10 +17,7 @@ public class GoogleTranslatePage extends AbstractClass{
     private By translatedWord = By.xpath("//span[@class='tlid-translation translation']//span");
     private By definitionSection = By.xpath("//div[@class='gt-cd gt-cd-mmd']");
 
-    public void goTo() {
-        driver.get(givenUrl);
-        Allure.addAttachment("Navigating to Google search page", "given url: " + givenUrl + " is opened");
-    }
+    
 
     public void selectLanguage(String langFrom, String langTo){
         driver.findElement(selectTranslateLangFrom).click();
