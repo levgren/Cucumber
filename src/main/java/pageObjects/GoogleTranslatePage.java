@@ -1,13 +1,15 @@
 package pageObjects;
 
+import cucumber.api.java.bs.A;
 import io.qameta.allure.Allure;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.junit.Assert;
+import utils.ConfigProperties;
 
 public class GoogleTranslatePage extends AbstractClass{
 
-    private String givenUrl = "https://translate.google.com/?hl=ru";
+    private String givenUrl = ConfigProperties.getTestProperty("givenUrl");
 
     private By selectTranslateLangFrom = By.cssSelector(".sl-wrap [aria-label]");
     private By selectTranslateLangFromSearchInput = By.cssSelector("#sl_list-search-box");
@@ -24,15 +26,22 @@ public class GoogleTranslatePage extends AbstractClass{
 
     public void selectLanguage(String langFrom, String langTo){
         driver.findElement(selectTranslateLangFrom).click();
+        Allure.addAttachment("clicking languages dropdown", "dropdown button is clicked");
         driver.findElement(selectTranslateLangFromSearchInput).sendKeys(langFrom);
+        Allure.addAttachment("typing language", langFrom + " language was entered");
         driver.findElement(selectTranslateLangFromSearchInput).sendKeys(Keys.ENTER);
+        Allure.addAttachment("submitting language", langFrom + " is submitted");
         driver.findElement(selectTranslateLangTo).click();
+        Allure.addAttachment("clicking languages dropdown", "dropdown button is clicked");
         driver.findElement(selectTranslateLangToSearchInput).sendKeys(langTo);
+        Allure.addAttachment("typing language", langTo + " language was entered");
         driver.findElement(selectTranslateLangToSearchInput).sendKeys(Keys.ENTER);
+        Allure.addAttachment("submitting language", langTo + " is submitted");
     }
 
     public void translateTheWord(String word){
         driver.findElement(selectTranslateLangFromInput).sendKeys(word);
+        Allure.addAttachment("Typing word in the left translate input", "word " + word + " was entered");
     }
 
     public void verifyTranslation(String transWord){
