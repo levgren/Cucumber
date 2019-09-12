@@ -21,6 +21,10 @@ public class GoogleTranslatePage extends AbstractClass{
         driver.get(givenUrl);
         Allure.addAttachment("Navigating to Google search page", "given url: " + givenUrl + " is opened");
     }
+    public void goTol() {
+        driver.get(givenUrl);
+        Allure.addAttachment("Navigating to Google search page", "given url: " + givenUrl + " is opened");
+    }
 
     public void selectLanguage(String langFrom, String langTo){
         driver.findElement(selectTranslateLangFrom).click();
