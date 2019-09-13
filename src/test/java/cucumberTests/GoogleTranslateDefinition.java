@@ -21,7 +21,7 @@ public class GoogleTranslateDefinition {
 
     @When("the user looks up the translation of the word {string}")
     public void the_user_looks_up_the_translation_of_the_word(String string) {
-        googleTranslatePage.translateTheWord("apple");
+        googleTranslatePage.translateTheWord(string);
     }
 
     @Then("they should see the translation {string}")

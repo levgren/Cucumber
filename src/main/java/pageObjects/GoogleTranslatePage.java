@@ -1,6 +1,5 @@
 package pageObjects;
 
-import cucumber.api.java.bs.A;
 import io.qameta.allure.Allure;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
