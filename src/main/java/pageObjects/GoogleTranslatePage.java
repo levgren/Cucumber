@@ -6,6 +6,9 @@ import org.openqa.selenium.Keys;
 import org.junit.Assert;
 import utils.ConfigProperties;
 
+import static junit.framework.TestCase.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 public class GoogleTranslatePage extends AbstractClass{
 
     private String givenUrl = ConfigProperties.getTestProperty("givenUrl");
@@ -16,7 +19,7 @@ public class GoogleTranslatePage extends AbstractClass{
     private By selectTranslateLangToSearchInput = By.cssSelector("#tl_list-search-box");
     private By selectTranslateLangFromInput = By.cssSelector("#source");
     private By translatedWord = By.xpath("//span[@class='tlid-translation translation']//span");
-    private By definitionSection = By.xpath("//div[@class='gt-cd gt-cd-mmd']");
+    private By definitionSection = By.xpath("//div[contains(text(),'the tree which bears apples.')]");
 
     public void goTo() {
         driver.get(givenUrl);
@@ -44,18 +47,17 @@ public class GoogleTranslatePage extends AbstractClass{
     }
 
     public void verifyTranslation(String transWord){
-        Assert.assertTrue("Translated word meets to the requirements",
+        assertTrue("Translated word meets to the requirements",
                 driver.findElement(translatedWord).getText().equalsIgnoreCase(transWord));
     }
 
     public void checkNumberOfLetters(int numOfChars){
         int lengthOfTHeWord = driver.findElement(translatedWord).getText().length();
-        Assert.assertEquals("Translated word contains " + numOfChars + " chars", lengthOfTHeWord, numOfChars);
+        assertEquals("Translated word contains " + numOfChars + " chars", lengthOfTHeWord, numOfChars);
     }
 
     public void checkDefinitionSection(String definition){
-        Assert.assertTrue("definition section appears",
-                driver.findElement(definitionSection).getText().contains(definition));
+        assertTrue("definition section appears",
+                driver.findElement(definitionSection).getText().equalsIgnoreCase(definition));
     }
-
 }

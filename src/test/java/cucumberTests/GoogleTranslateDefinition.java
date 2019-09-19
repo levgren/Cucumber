@@ -5,7 +5,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import pageObjects.GoogleTranslatePage;
 
-public class GoogleTranslateDefinition {
+public class GoogleTranslateDefinition extends Hooks {
 
     private GoogleTranslatePage googleTranslatePage = new GoogleTranslatePage();
 
