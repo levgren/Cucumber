@@ -3,7 +3,6 @@ package pageObjects;
 import io.qameta.allure.Allure;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.junit.Assert;
 import utils.ConfigProperties;
 
 import static junit.framework.TestCase.assertEquals;
